@@ -36,8 +36,9 @@ typedef struct s_player {
     int score;          //Min = 0, Max = 3
 } t_player;
 
+t_ball initBall();
 
 void updatePlayer(t_player player, t_nano_pin potentiometer);
 
-void updateBall(t_ball ball, t_game_grid gameGrid);
+void updateBall(t_ball ball, t_player player1, t_player player2);
 
