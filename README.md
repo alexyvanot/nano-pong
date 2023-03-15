@@ -29,7 +29,9 @@ In order to use our project, make sure to import it in to Visual Studio Code wit
 >
 > Then upload on it the code.
 - <details>
+To upload on the arduino, press this button:
   ![Image](/resources/images/read_me/import.png "Init")
+To show the console of the arduino, press this button:
   ![Image](/resources/images/read_me/serial_monitor.png "Pick")
 </details>
 
