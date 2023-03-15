@@ -5,6 +5,17 @@
 ![Circuit](/resources/images/breadboard/main3.jpg "Circuit")
  ###### *Student project by Sandro Bakuradze ; Alexy Vanot ; Pierre Gervais*
 
+## **Usage**
+
+Nano Pong is a two-dimensional sports game that simulates table tennis. The player controls an in-game paddle by moving it vertically across the left or right side of the screen.
+
+They can compete against another player controlling a second paddle on the opposing side.
+Players use the paddles to hit a ball back and forth.
+
+**NOTE:** *This game runs on arduino nano chip.*
+
+---
+
 ## **Installation**
 
 In order to use our project, make sure to import it in to Visual Studio Code with PlateformIO extension.
