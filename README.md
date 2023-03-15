@@ -19,21 +19,19 @@ In order to use our project, make sure to import it in to Visual Studio Code wit
 > #### **2. Import the project**
 > 
 > Then, import the project to VSCode using PlateformIO extension. Click on its icon at the side bar then pick the cloned git project.
-> <details>
-    ![Image](/resources/images/read_me/init_platformio.png "Init")
-
-    ![Image](/resources/images/read_me/import_folder.png "Pick")
-> </details>
+- <details>
+  ![Image](/resources/images/read_me/init_platformio.png "Init")
+  ![Image](/resources/images/read_me/import_folder.png "Pick")
+</details>
 
 > 
 > #### **3. Plug the Arduino Nano to your computer** 
 >
 > Then upload on it the code.
-> <details>
-    ![Image](/resources/images/read_me/import.png "Init")
-
-    ![Image](/resources/images/read_me/serial_monitor.png "Pick")
-> </details>
+- <details>
+  ![Image](/resources/images/read_me/import.png "Init")
+  ![Image](/resources/images/read_me/serial_monitor.png "Pick")
+</details>
 
 
 ## **Consigne : *Exercice de fin.***
