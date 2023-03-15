@@ -52,15 +52,23 @@ int main(void) {
 
   printf("Game started: %u\n", game.isGameStarted);
 
-  for(;;) {
-    printf("------------------------------------------------------------------\n");
-    updatePaddles(&game);
-    game.ball = updateBall(game);
+  uint8_t counter = 1;
 
+  for(;;) {
+    printf("-------------------------------Loop-Cycle-%d-------------------------------\n", counter);
+
+    updatePaddles(&game);
+
+    if (counter >= 5) {
+      game.ball = updateBall(game);
+      counter = 0;
+    }
+    
     clear_MAX7219();
     draw_game(game);
     
-    _delay_ms(2000);
+    _delay_ms(200);
+    counter++;
   }
 
   return 0;
