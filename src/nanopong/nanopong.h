@@ -46,11 +46,13 @@ typedef struct s_game {
 
 t_ball initBall();
 
-void updateBall(t_game game);
+t_ball updateBall(t_game game);
 
-void checkAndOrChangeDirection(t_ball ball, t_player player1, t_player player2);
+void update(t_game* game);
 
-void moveBall(t_ball ball);
+t_ball checkAndOrChangeDirection(t_ball ball, t_player player1, t_player player2);
+
+t_ball moveBall(t_ball ball);
 
 uint8_t get_paddle_position(t_player player);
 

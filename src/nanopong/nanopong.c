@@ -7,8 +7,8 @@ static const t_paddle_position_map paddle_position_map[] = {
 };
 
 static const uint8_t ball_position_map[] = {
-  0b10000000, 0b01000000, 0b00100000, 0b00010000,
-  0b00001000, 0b00000100, 0b00000010, 0b00000001
+  0b00000001, 0b00000010, 0b00000100, 0b00001000,
+  0b00010000, 0b00100000, 0b01000000, 0b10000000
 };
 
 static const t_adcValue_position_map adcValue_pos_map[] = {
@@ -21,36 +21,44 @@ t_ball initBall() {
     ball.direction = generate_random_number(0, 5);
     ball.x = generate_random_number(3, 4);
     ball.y = generate_random_number(3, 4);
-
+    
+    printf("Balls has been made : x = %d | y = %d | dir = %d\n", ball.x, ball.y, ball.direction);
     return ball;
 }
 
-void updateBall(t_game game) {
-    checkAndOrChangeDirection(game.ball, game.players[0], game.players[1]);
-    moveBall(game.ball);
+t_ball updateBall(t_game game) {
+    game.ball = checkAndOrChangeDirection(game.ball, game.players[0], game.players[1]);
+    game.ball = moveBall(game.ball);
+    return game.ball;
 }
 
-void checkAndOrChangeDirection(t_ball ball, t_player player1, t_player player2) {
+t_ball checkAndOrChangeDirection(t_ball ball, t_player player1, t_player player2) {
     if (ball.x == 1) {   //Check if ball is neighboring the paddles.
         if (ball.direction % 2 == 0) {  //Check if ball is going left.
             if (ball.y == (player1.paddlePosition + 1)) { //Ball hit the middle of the paddle.
-                ball.direction = Right;   
-            } else if (ball.y == (player1.paddlePosition + 1) - 1 || (player1.paddlePosition + 1) - 2) { //Ball hit the top of the paddle.
-                ball.direction = Diagonal_Up_Right;    
-            } else if (ball.y == (player1.paddlePosition + 1) + 1 || ball.y == (player1.paddlePosition + 1) + 2) { //Ball hit the bottom of the paddle.
-                ball.direction = Diagonal_Down_Right;     
+                ball.direction = Right;
+                printf("Ball hit Right paddle in the center.\n");
+            } else if ((ball.y == (player1.paddlePosition + 1) - 1) || ((player1.paddlePosition + 1) - 2) && ball.direction == Diagonal_Down_Left) { //Ball hit the top of the paddle.
+                ball.direction = Diagonal_Up_Right;
+                printf("Ball hit Right paddle on the top.\n");   
+            } else if ((ball.y == (player1.paddlePosition + 1) + 1) || ((player1.paddlePosition + 1) + 2) && ball.direction == Diagonal_Up_Left) { //Ball hit the bottom of the paddle.
+                ball.direction = Diagonal_Down_Right;
+                printf("Ball hit Right paddle on the bottom.\n");     
             }
         }
     }
 
     if (ball.x == 6) { //Right Padde (Player 2).
         if (ball.direction % 2 == 1) {  //Check if ball is going right.
-            if (ball.y == (player1.paddlePosition + 1)) { //Ball hit the middle of the paddle.
+            if (ball.y == (player2.paddlePosition + 1)) { //Ball hit the middle of the paddle.
                 ball.direction = Left;   
-            } else if (ball.y == (player2.paddlePosition + 1) - 1 || (player2.paddlePosition + 1) - 2) { //Ball hit the top of the paddle.
-                ball.direction = Diagonal_Up_Left;    
-            } else if (ball.y == (player2.paddlePosition + 1) + 1 || ball.y == (player2.paddlePosition + 1) + 2) { //Ball hit the bottom of the paddle.
+                printf("Ball hit Left paddle in the center.\n");
+            } else if ((ball.y == (player2.paddlePosition + 1) - 1) || ((player2.paddlePosition + 1) - 2) && ball.direction == Diagonal_Down_Right) { //Ball hit the top of the paddle.
+                ball.direction = Diagonal_Up_Left; 
+                printf("Ball hit Left paddle on the top.\n");  
+            } else if ((ball.y == (player2.paddlePosition + 1) + 1) || ((player2.paddlePosition + 1) + 2) && ball.direction == Diagonal_Up_Right) { //Ball hit the bottom of the paddle.
                 ball.direction = Diagonal_Down_Left;
+                printf("Ball hit Left paddle on the bottom.\n");
             }
         }
     }
@@ -58,33 +66,51 @@ void checkAndOrChangeDirection(t_ball ball, t_player player1, t_player player2) 
     if (ball.y == 0) {
         if (ball.direction % 2 == 0) {
             ball.direction = Diagonal_Down_Left;
+            printf("Ball hit the Top of the grid while going Left.\n");
         } else {
             ball.direction = Diagonal_Down_Right;
+            printf("Ball hit the Top of the grid while going Right.\n");
         }
     }
     if (ball.y == 7) {
         if (ball.direction % 2 == 0) {
             ball.direction = Diagonal_Up_Left;
+            printf("Ball hit the Bottom of the grid while going Left.\n");
         } else {
             ball.direction = Diagonal_Up_Right;
+            printf("Ball hit the Bottom of the grid while going Right.\n");
         }
     }
+
+    return ball;
 }
 
-void moveBall(t_ball ball) {
-    if (ball.direction % 2 == 0) { //True = Left | False = Right.
+t_ball moveBall(t_ball ball) {    //Check if the ball is out of bounds.
+    
+    if (!((ball.x > 0 && ball.x < 7) || (ball.y >= 0 && 7 <= ball.y))) {
+        printf("Ball is out of bounds.\n");
+        //If ball is out of bounds then don't move it.
+    } else {
+        if (ball.direction % 2 == 0) { //True = Left | False = Right.
             ball.x--;
+            printf("Ball moved Up 1.\n");
         } else {
             ball.x++;
+            printf("Ball moved Down 1.\n");
         }
 
-    if (ball.direction != 0 && ball.direction != 1) { //True = Diagonal
-        if (ball.direction == 2 || ball.direction == 3) { //True = Up | False = Down.
-            ball.y--;
-        } else {
-            ball.y++;
+        if (ball.direction != 0 && ball.direction != 1) { //True = Diagonal
+            if (ball.direction == 2 || ball.direction == 3) { //True = Up | False = Down.
+                ball.y--;
+                printf("Ball moved Left 1.\n");
+            } else {
+                ball.y++;
+                printf("Ball moved Right 1.\n");
+            }
         }
     }
+    
+    return ball;
 }
 
 t_game init_game() {
@@ -131,3 +157,8 @@ uint8_t generate_random_number(uint8_t lower, uint8_t upper)
   return (rand() % (upper - lower + 1)) + lower;
 }
 
+void update(t_game* game) {
+    for (uint8_t i = 0; i < 2; i++) {
+        game->players[i].paddlePosition = get_paddle_position(game->players[i]);
+  }
+}
