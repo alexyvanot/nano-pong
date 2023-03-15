@@ -15,11 +15,11 @@ typedef struct s_game_grid {    //May be deprecate. TBD.
 
 typedef struct ball {
     //Defined by: e_ball_direction.
-    int direction;      
+    uint8_t direction;      
     //Top left corner is 0,0.
     //Bottom right corner is 7,7.
-    int x;  //Min = 0, Max = 7
-    int y;  //Min = 0, Max = 7
+    uint8_t x;  //Min = 0, Max = 7
+    uint8_t y;  //Min = 0, Max = 7
 } t_ball;
 
 typedef enum e_ball_direction {
@@ -32,11 +32,14 @@ typedef enum e_ball_direction {
 } t_ball_direction;
 
 typedef struct s_player {
-    int paddlePosition; //Min = 0, Max = 6
-    int score;          //Min = 0, Max = 3
+    uint8_t index;          //Min = 0, Max = 1
+    uint8_t paddlePosition; //Min = 0, Max = 5 (To sync coords with ball offset by +1 !)
+    uint8_t score;          //Min = 0, Max = 3
 } t_player;
 
 t_ball initBall();
+
+t_player initPlayer();
 
 void updatePlayer(t_player player, t_nano_pin potentiometer);
 
