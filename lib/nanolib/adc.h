@@ -44,8 +44,7 @@ void init_pin_ADC(t_nano_pin pin);
  * @note Enables the ADC, set the ADC to right adjust, disables interrupt mode
  * and sets the prescaler to /8
  */
-void init_ADC(uint8_t voltage_reference, uint8_t left_adjust, uint8_t interrupt,
-              uint8_t prescaler);
+void init_ADC(uint8_t voltage_reference, uint8_t left_adjust, uint8_t interrupt, uint8_t prescaler);
 
 /**
  * @brief Reads an analog pin.

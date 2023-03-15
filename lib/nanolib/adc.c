@@ -8,11 +8,9 @@ void init_pin_ADC(t_nano_pin pin) {
   DIDR0 |= _BV(pin - 14);
 }
 
-void init_ADC(uint8_t voltage_reference,
-              uint8_t left_adjust, uint8_t interrupt, uint8_t prescaler) {
+void init_ADC(uint8_t voltage_reference,uint8_t left_adjust, uint8_t interrupt, uint8_t prescaler) {
   // Set the voltage reference and the format adjustment
-  ADMUX = (_BV(REFS0) & (voltage_reference << REFS0)) |
-          (_BV(ADLAR) & (left_adjust << ADLAR));
+  ADMUX = (_BV(REFS0) & (voltage_reference << REFS0)) | (_BV(ADLAR) & (left_adjust << ADLAR));
   // Enable the ADC, set the the interrupt and select the prescaling
   ADCSRA = _BV(ADEN) | (_BV(ADIE) & (interrupt << ADIE)) | prescaler;
 }
