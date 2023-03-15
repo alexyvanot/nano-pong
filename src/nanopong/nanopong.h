@@ -18,17 +18,16 @@ typedef struct ball {
 } t_ball;
 
 typedef enum e_ball_direction {
-    Left,               //0     
-    Right,              //1         
-    Diagonal_Up_Left,   //2   
-    Diagonal_Up_Right,  //3                
-    Diagonal_Down_Left, //4    
-    Diagonal_Down_Right //5  
+    Left,               //0
+    Right,              //1
+    Diagonal_Up_Left,   //2
+    Diagonal_Up_Right,  //3
+    Diagonal_Down_Left, //4
+    Diagonal_Down_Right //5
 } t_ball_direction;
 
 typedef struct s_player {
     int paddlePosition; //Min = 0, Max = 6
     int score;          //Min = 0, Max = 3
 } t_player;
-
 
