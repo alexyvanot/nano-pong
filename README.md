@@ -17,7 +17,7 @@ In order to use our project, make sure to import it in to Visual Studio Code wit
 > 
 > Then, import the project to VSCode using PlateformIO extension. Click on its icon at the side bar then pick the cloned git project.
 <details>
-    ![Image](/resources/images/read_me/import_folder.png "Git Clone")
+    ![Image](/resources/images/read_me/init_platformio.png "Git Clone")
 </details>
 
 > 
