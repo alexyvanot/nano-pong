@@ -16,8 +16,8 @@ Players use the paddles to hit a ball back and forth.
 
 ---
 
-> ## **Images**
->
+## **Images**
+
 > There our breadboard. (develop in order to reveal)
 - <details>
   ![Circuit](/resources/images/breadboard/main.jpg "Circuit")
