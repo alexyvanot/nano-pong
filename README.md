@@ -10,6 +10,10 @@ In order to use our project, make sure to import it in to Visual Studio Code wit
 > ```git clone git@gitlab.esiea.fr:vanot/nano-pong.git```
 >
 > 2. Then, import the project to VSCode using PlateformIO extension. Click on its icon at the side bar then pick the cloned git project.
+> <details>
+>   <summury>Example</summury>
+>   ![Image](/resources/images/read_me/import.png "Git Clone")
+> </details>
 >
 > 3. 
 >
