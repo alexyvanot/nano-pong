@@ -45,6 +45,18 @@ In order to use our project, make sure to import it in to Visual Studio Code wit
 </details>
 
 
+> ## **Images**
+>
+> There our breadboard. (develop in order to reveal)
+- <details>
+  ![Circuit](/resources/images/breadboard/main.jpg "Circuit")
+  ![Circuit](/resources/images/breadboard/main2.jpg "Circuit")
+  ![Circuit](/resources/images/breadboard/MAX7219.jpg "Circuit")
+  ![Circuit](/resources/images/breadboard/nano.jpg "Circuit")
+  ![Circuit](/resources/images/breadboard/potentiometers.jpg "Circuit")
+</details>
+
+
 ## **Consigne : *Exercice de fin.***
 
 > #### Objectif: Faire un jeu de pong.
