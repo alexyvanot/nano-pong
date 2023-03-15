@@ -6,7 +6,8 @@
 
 In order to use our project, make sure to import it in to Visual Studio Code with PlateformIO extension.
 
-<details markdown="1">
+<details>
+<div markdown="1">
 > 1. First, clone the project
 > ```git clone git@gitlab.esiea.fr:vanot/nano-pong.git```
 >
@@ -21,6 +22,7 @@ In order to use our project, make sure to import it in to Visual Studio Code wit
 >
 >
 >
+</div>
 </details>
 
 
