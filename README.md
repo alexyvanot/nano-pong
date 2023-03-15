@@ -2,7 +2,7 @@
 
 ---
 
-![Circuit](/resources/images/breadboard/t_main3.jpg "Circuit")
+![Circuit](/resources/images/breadboard/t_main3.png "Circuit")
  ###### *Student project by Sandro Bakuradze ; Alexy Vanot ; Pierre Gervais*
 
 ## **Usage and Rules**
