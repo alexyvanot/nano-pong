@@ -33,83 +33,85 @@ t_ball updateBall(t_game game) {
 }
 
 t_ball checkAndOrChangeDirection(t_ball ball, t_player player1, t_player player2) {
-    if (ball.x == 1) {   //Check if ball is neighboring the paddles.
+    if (ball.x == 1) {   //Check if ball is neighboring the Left Paddle (Player 1).
         if (ball.direction % 2 == 0) {  //Check if ball is going left.
             if (ball.y == (player1.paddlePosition + 1)) { //Ball hit the middle of the paddle.
                 ball.direction = Right;
-                printf("Ball hit Right paddle in the center.\n");
-            } else if ((ball.y == (player1.paddlePosition + 1) - 1) || ((player1.paddlePosition + 1) - 2) && ball.direction == Diagonal_Down_Left) { //Ball hit the top of the paddle.
+                printf("!!! EVENT !!! - Ball hit Left paddle in the center.\n");
+            } else if ((ball.y == (player1.paddlePosition + 1) - 1) && ((ball.y == (player1.paddlePosition + 1) - 2) && (ball.direction == Diagonal_Down_Left))) { //Ball hit the top side of the paddle.
                 ball.direction = Diagonal_Up_Right;
-                printf("Ball hit Right paddle on the top.\n");   
-            } else if ((ball.y == (player1.paddlePosition + 1) + 1) || ((player1.paddlePosition + 1) + 2) && ball.direction == Diagonal_Up_Left) { //Ball hit the bottom of the paddle.
+                printf("!!! EVENT !!! - Ball hit Left paddle on the top side or top diagonal.\n");
+            } else if ((ball.y == (player1.paddlePosition + 1) + 1) && ((ball.y == (player1.paddlePosition + 1) + 2) && (ball.direction == Diagonal_Up_Left))) { //Ball hit the bottom side of the paddle.
                 ball.direction = Diagonal_Down_Right;
-                printf("Ball hit Right paddle on the bottom.\n");     
+                printf("!!! EVENT !!! - Ball hit Left paddle on the bottom side or bottom diagonal.\n");     
             }
         }
     }
 
-    if (ball.x == 6) { //Right Padde (Player 2).
+    if (ball.x == 6) { //Check if ball is neighboring the Right Paddle (Player 2).
         if (ball.direction % 2 == 1) {  //Check if ball is going right.
             if (ball.y == (player2.paddlePosition + 1)) { //Ball hit the middle of the paddle.
-                ball.direction = Left;   
-                printf("Ball hit Left paddle in the center.\n");
-            } else if ((ball.y == (player2.paddlePosition + 1) - 1) || ((player2.paddlePosition + 1) - 2) && ball.direction == Diagonal_Down_Right) { //Ball hit the top of the paddle.
-                ball.direction = Diagonal_Up_Left; 
-                printf("Ball hit Left paddle on the top.\n");  
-            } else if ((ball.y == (player2.paddlePosition + 1) + 1) || ((player2.paddlePosition + 1) + 2) && ball.direction == Diagonal_Up_Right) { //Ball hit the bottom of the paddle.
+                ball.direction = Left;
+                printf("!!! EVENT !!! - Ball hit Right paddle in the center.\n");
+            } else if ((ball.y == (player2.paddlePosition + 1) - 1) && ((ball.y == (player2.paddlePosition + 1) - 2) && (ball.direction == Diagonal_Down_Right))) { //Ball hit the top side of the paddle.
+                ball.direction = Diagonal_Up_Left;
+                printf("!!! EVENT !!! - Ball hit Right paddle on the top side or top diagonal.\n");
+            } else if ((ball.y == (player2.paddlePosition + 1) + 1) && ((ball.y == (player2.paddlePosition + 1) + 2) && (ball.direction == Diagonal_Up_Right))) { //Ball hit the bottom side of the paddle.
                 ball.direction = Diagonal_Down_Left;
-                printf("Ball hit Left paddle on the bottom.\n");
+                printf("!!! EVENT !!! - Ball hit Right paddle on the bottom side or bottom diagonal.\n");     
             }
         }
     }
-
-    if (ball.y == 0) {
-        if (ball.direction % 2 == 0) {
+    
+    if (ball.y == 0) { //Top
+        if (ball.direction % 2 == 0) { //Left.
             ball.direction = Diagonal_Down_Left;
-            printf("Ball hit the Top of the grid while going Left.\n");
-        } else {
+            printf("!!! EVENT !!! - Ball hit the Top of the grid while going Left.\n");
+        } else { //Right.
             ball.direction = Diagonal_Down_Right;
-            printf("Ball hit the Top of the grid while going Right.\n");
+            printf("!!! EVENT !!! - Ball hit the Botto of the grid while going Right.\n");
         }
     }
-    if (ball.y == 7) {
-        if (ball.direction % 2 == 0) {
+    if (ball.y == 7) { //Bottom
+        if (ball.direction % 2 == 0) { //Left.
             ball.direction = Diagonal_Up_Left;
-            printf("Ball hit the Bottom of the grid while going Left.\n");
-        } else {
+            printf("!!! EVENT !!! - Ball hit the Bottom of the grid while going Left.\n");
+        } else { //Right.
             ball.direction = Diagonal_Up_Right;
-            printf("Ball hit the Bottom of the grid while going Right.\n");
+            printf("!!! EVENT !!! - Ball hit the Bottom of the grid while going Right.\n");
         }
     }
-
+    
     return ball;
 }
 
 t_ball moveBall(t_ball ball) {    //Check if the ball is out of bounds.
     
     if (!((ball.x > 0 && ball.x < 7) || (ball.y >= 0 && 7 <= ball.y))) {
-        printf("Ball is out of bounds.\n");
+        printf(" !!! EVENT !!! - Ball is out of bounds.\n");
         //If ball is out of bounds then don't move it.
     } else {
         if (ball.direction % 2 == 0) { //True = Left | False = Right.
             ball.x--;
-            printf("Ball moved Up 1.\n");
+            printf("Ball moved Left 1.\n");
         } else {
             ball.x++;
-            printf("Ball moved Down 1.\n");
+            printf("Ball moved Right 1.\n");
         }
 
         if (ball.direction != 0 && ball.direction != 1) { //True = Diagonal
             if (ball.direction == 2 || ball.direction == 3) { //True = Up | False = Down.
                 ball.y--;
-                printf("Ball moved Left 1.\n");
+                printf("Ball moved Up 1.\n");
             } else {
                 ball.y++;
-                printf("Ball moved Right 1.\n");
+                
+                printf("Ball moved Down 1.\n");
             }
         }
     }
     
+    printf("Ball has been updated to : x = %d | y = %d | direction = %s\n", ball.x, ball.y, getDirectionString(ball));
     return ball;
 }
 
@@ -157,8 +159,27 @@ uint8_t generate_random_number(uint8_t lower, uint8_t upper)
   return (rand() % (upper - lower + 1)) + lower;
 }
 
-void update(t_game* game) {
+void updatePaddles(t_game* game) {
     for (uint8_t i = 0; i < 2; i++) {
         game->players[i].paddlePosition = get_paddle_position(game->players[i]);
   }
+  printf("Paddles have been updated to : Paddle-1 = %d | Paddle-2 = %d\n", game->players[0].paddlePosition + 1, game->players[1].paddlePosition + 1);
+}
+
+char* getDirectionString(t_ball ball) {
+    switch (ball.direction) {
+        case 0:
+            return "Left";
+        case 1:
+            return "Right";
+        case 2:
+            return "Diagonal_Up_Left";
+        case 3:
+            return "Diagonal_Up_Right";
+        case 4:
+            return "Diagonal_Down_Left";
+        case 5:
+            return "Diagonal_Down_Right";
+    }
+    return ". . ."; 
 }

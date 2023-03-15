@@ -39,7 +39,7 @@ void led()
 
 int main(void) {
   
-  //sei();
+  sei();
   init_block_USART0();
   init_potentiometers();
   init_MAX7219();
@@ -52,35 +52,15 @@ int main(void) {
 
   printf("Game started: %u\n", game.isGameStarted);
 
-  uint8_t counter = 0;
-
   for(;;) {
-    update(&game);
-    printf("Paddles have been updated to : Paddle-1 = %d | Paddle-2 = %d\n", game.players[0].paddlePosition, game.players[1].paddlePosition);
+    printf("------------------------------------------------------------------\n");
+    updatePaddles(&game);
     game.ball = updateBall(game);
-    printf("Ball has been updated to : x = %d | y = %d | dir = %d\n", game.ball.x, game.ball.y, game.ball.direction);
 
     clear_MAX7219();
     draw_game(game);
     
-    _delay_ms(333);
-
-    update(&game);
-    printf("Paddles have been updated to : Paddle-1 = %d | Paddle-2 = %d\n", game.players[0].paddlePosition, game.players[1].paddlePosition);
-
-    clear_MAX7219();
-    draw_game(game);
-
-    _delay_ms(333);
-
-    update(&game);
-    printf("Paddles have been updated to : Paddle-1 = %d | Paddle-2 = %d\n", game.players[0].paddlePosition, game.players[1].paddlePosition);
-
-    clear_MAX7219();
-    draw_game(game);
-
-    _delay_ms(333);
-    counter++;
+    _delay_ms(2000);
   }
 
   return 0;
