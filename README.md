@@ -5,7 +5,7 @@
 ![Circuit](/resources/images/breadboard/main3.jpg "Circuit")
  ###### *Student project by Sandro Bakuradze ; Alexy Vanot ; Pierre Gervais*
 
-## **Usage**
+## **Usage and Rules**
 
 Nano Pong is a two-dimensional sports game that simulates table tennis. The player controls an in-game paddle by moving it vertically across the left or right side of the screen.
 
