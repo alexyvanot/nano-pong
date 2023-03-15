@@ -22,10 +22,10 @@ void init_potentiometers()
 }
 
 int main(void) {
-  //sei();
+  sei();
   init_block_USART0();
-  //init_MAX7219();
-  //clear_MAX7219();
+  init_MAX7219();
+  clear_MAX7219();
 
   //set_brightness_MAX7219(0b00001111);
   init_potentiometers();
@@ -53,6 +53,9 @@ int main(void) {
       potA1 = adcValA1 ;
       printf("A0: %d ; A1: %d\n", potA0, potA1);
     }
+
+      
+    
   }
   //_delay_ms(100);
 
