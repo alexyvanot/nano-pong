@@ -16,6 +16,19 @@ Players use the paddles to hit a ball back and forth.
 
 ---
 
+> ## **Images**
+>
+> There our breadboard. (develop in order to reveal)
+- <details>
+  ![Circuit](/resources/images/breadboard/main.jpg "Circuit")
+  ![Circuit](/resources/images/breadboard/main2.jpg "Circuit")
+  ![Circuit](/resources/images/breadboard/MAX7219.jpg "Circuit")
+  ![Circuit](/resources/images/breadboard/nano.jpg "Circuit")
+  ![Circuit](/resources/images/breadboard/potentiometers.jpg "Circuit")
+</details>
+
+---
+
 ## **Installation**
 
 In order to use our project, make sure to import it in to Visual Studio Code with PlateformIO extension.
@@ -44,22 +57,11 @@ In order to use our project, make sure to import it in to Visual Studio Code wit
   ![Image](/resources/images/read_me/serial_monitor.png "Pick")
 </details>
 
-
-> ## **Images**
->
-> There our breadboard. (develop in order to reveal)
-- <details>
-  ![Circuit](/resources/images/breadboard/main.jpg "Circuit")
-  ![Circuit](/resources/images/breadboard/main2.jpg "Circuit")
-  ![Circuit](/resources/images/breadboard/MAX7219.jpg "Circuit")
-  ![Circuit](/resources/images/breadboard/nano.jpg "Circuit")
-  ![Circuit](/resources/images/breadboard/potentiometers.jpg "Circuit")
-</details>
-
+---
 
 ## **Consigne : *Exercice de fin.***
 
-> #### Objectif: Faire un jeu de pong.
+> #### **Objectif:** *Faire un jeu de pong.*
 >
 > - Le jeu doit être affiché sur la matrice de led.
 > - Chaque raquette doit faire 3 pixels de large.
