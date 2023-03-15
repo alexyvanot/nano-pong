@@ -2,7 +2,7 @@
 
 ---
 
-![Circuit](/resources/images/breadboard/main3.jpg "Circuit")
+![Circuit](/resources/images/breadboard/t_main3.jpg "Circuit")
  ###### *Student project by Sandro Bakuradze ; Alexy Vanot ; Pierre Gervais*
 
 ## **Usage and Rules**
@@ -22,6 +22,7 @@ Players use the paddles to hit a ball back and forth.
 - <details>
   ![Circuit](/resources/images/breadboard/main.jpg "Circuit")
   ![Circuit](/resources/images/breadboard/main2.jpg "Circuit")
+  ![Circuit](/resources/images/breadboard/main3.jpg "Circuit")
   ![Circuit](/resources/images/breadboard/MAX7219.jpg "Circuit")
   ![Circuit](/resources/images/breadboard/nano.jpg "Circuit")
   ![Circuit](/resources/images/breadboard/potentiometers.jpg "Circuit")
