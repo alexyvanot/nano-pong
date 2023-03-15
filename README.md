@@ -17,7 +17,7 @@ In order to use our project, make sure to import it in to Visual Studio Code wit
 > 
 > Then, import the project to VSCode using PlateformIO extension. Click on its icon at the side bar then pick the cloned git project.
 <details>
-    <img src="/media/cc0-images/grapefruit-slice-332-332.jpg" alt="Import">
+    ![Image](/resources/images/read_me/import_folder.png "Git Clone")
 </details>
 
 > 
