@@ -38,10 +38,10 @@ t_ball checkAndOrChangeDirection(t_ball ball, t_player player1, t_player player2
             if (ball.y == (player1.paddlePosition + 1)) { //Ball hit the middle of the paddle.
                 ball.direction = Right;
                 printf("!!! EVENT !!! - Ball hit Left paddle in the center.\n");
-            } else if ((ball.y == (player1.paddlePosition + 1) - 1) && ((ball.y == (player1.paddlePosition + 1) - 2) && (ball.direction == Diagonal_Down_Left))) { //Ball hit the top side of the paddle.
+            } else if ((ball.y == (player1.paddlePosition + 1) - 1) || ((ball.y == (player1.paddlePosition + 1) - 2) && (ball.direction == Diagonal_Down_Left))) { //Ball hit the top side of the paddle.
                 ball.direction = Diagonal_Up_Right;
                 printf("!!! EVENT !!! - Ball hit Left paddle on the top side or top diagonal.\n");
-            } else if ((ball.y == (player1.paddlePosition + 1) + 1) && ((ball.y == (player1.paddlePosition + 1) + 2) && (ball.direction == Diagonal_Up_Left))) { //Ball hit the bottom side of the paddle.
+            } else if ((ball.y == (player1.paddlePosition + 1) + 1) || ((ball.y == (player1.paddlePosition + 1) + 2) && (ball.direction == Diagonal_Up_Left))) { //Ball hit the bottom side of the paddle.
                 ball.direction = Diagonal_Down_Right;
                 printf("!!! EVENT !!! - Ball hit Left paddle on the bottom side or bottom diagonal.\n");     
             }
@@ -53,10 +53,10 @@ t_ball checkAndOrChangeDirection(t_ball ball, t_player player1, t_player player2
             if (ball.y == (player2.paddlePosition + 1)) { //Ball hit the middle of the paddle.
                 ball.direction = Left;
                 printf("!!! EVENT !!! - Ball hit Right paddle in the center.\n");
-            } else if ((ball.y == (player2.paddlePosition + 1) - 1) && ((ball.y == (player2.paddlePosition + 1) - 2) && (ball.direction == Diagonal_Down_Right))) { //Ball hit the top side of the paddle.
+            } else if ((ball.y == (player2.paddlePosition + 1) - 1) || ((ball.y == (player2.paddlePosition + 1) - 2) && (ball.direction == Diagonal_Down_Right))) { //Ball hit the top side of the paddle.
                 ball.direction = Diagonal_Up_Left;
                 printf("!!! EVENT !!! - Ball hit Right paddle on the top side or top diagonal.\n");
-            } else if ((ball.y == (player2.paddlePosition + 1) + 1) && ((ball.y == (player2.paddlePosition + 1) + 2) && (ball.direction == Diagonal_Up_Right))) { //Ball hit the bottom side of the paddle.
+            } else if ((ball.y == (player2.paddlePosition + 1) + 1) || ((ball.y == (player2.paddlePosition + 1) + 2) && (ball.direction == Diagonal_Up_Right))) { //Ball hit the bottom side of the paddle.
                 ball.direction = Diagonal_Down_Left;
                 printf("!!! EVENT !!! - Ball hit Right paddle on the bottom side or bottom diagonal.\n");     
             }

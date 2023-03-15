@@ -54,21 +54,24 @@ int main(void) {
 
   uint8_t counter = 1;
 
-  for(;;) {
-    printf("-------------------------------Loop-Cycle-%d-------------------------------\n", counter);
+  while(true) {
+    game.ball = initBall(); //Reset the ball for play.
+    while(((game.ball.x > 0 && game.ball.x < 7) || (game.ball.y >= 0 && 7 <= game.ball.y))) {
+      printf("-------------------------------Loop-Cycle-%d-------------------------------\n", counter);
 
-    updatePaddles(&game);
+      updatePaddles(&game);
 
-    if (counter >= 5) {
-      game.ball = updateBall(game);
-      counter = 0;
+      if (counter >= 9) {
+        game.ball = updateBall(game);
+        counter = 0;
+      }
+    
+      clear_MAX7219();
+      draw_game(game);
+    
+      _delay_ms(50);
+      counter++;
     }
-    
-    clear_MAX7219();
-    draw_game(game);
-    
-    _delay_ms(200);
-    counter++;
   }
 
   return 0;
