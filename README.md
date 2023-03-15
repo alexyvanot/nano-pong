@@ -2,7 +2,50 @@
 
 ---
 
-## Consigne : *Exercice de fin.*
+![Circuit](/resources/images/breadboard/main3.jpg "Circuit")
+ ###### *Student project by Sandro Bakuradze ; Alexy Vanot ; Pierre Gervais*
+
+## **Usage and Rules**
+
+Nano Pong is a two-dimensional sports game that simulates table tennis. The player controls an in-game paddle by moving it vertically across the left or right side of the screen.
+
+They can compete against another player controlling a second paddle on the opposing side.
+Players use the paddles to hit a ball back and forth.
+
+**NOTE:** *This game runs on arduino nano chip.*
+
+---
+
+## **Installation**
+
+In order to use our project, make sure to import it in to Visual Studio Code with PlateformIO extension.
+
+> #### **1. Clone the repository**
+>
+> Execute this command into your terminal in order to clone this repository.
+>
+> ```git clone git@gitlab.esiea.fr:vanot/nano-pong.git```
+
+
+> #### **2. Import the project**
+> 
+> Then, import the project to VSCode using PlateformIO extension. Click on its icon at the side bar then pick the cloned git project.
+- <details>
+  ![Image](/resources/images/read_me/init_platformio.png "Init")
+  ![Image](/resources/images/read_me/import_folder.png "Pick")
+</details>
+
+> 
+> #### **3. Plug the Arduino Nano to your computer** 
+>
+> Then upload on it the code then show its console.
+- <details>
+  ![Image](/resources/images/read_me/import.png "Init")
+  ![Image](/resources/images/read_me/serial_monitor.png "Pick")
+</details>
+
+
+## **Consigne : *Exercice de fin.***
 
 > #### Objectif: Faire un jeu de pong.
 >
