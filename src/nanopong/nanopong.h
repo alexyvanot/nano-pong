@@ -68,4 +68,6 @@ uint8_t generate_random_number(uint8_t lower, uint8_t upper); //upper inclusive
 
 char* getDirectionString(t_ball ball);
 
+void displayPointsLed(t_game game);
+
 #endif

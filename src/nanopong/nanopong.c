@@ -22,7 +22,7 @@ t_ball initBall() {
     ball.x = generate_random_number(3, 4);
     ball.y = generate_random_number(3, 4);
     
-    printf("Balls has been made : x = %d | y = %d | dir = %d\n", ball.x, ball.y, ball.direction);
+    //printf("Ball has been init : x = %d | y = %d | dir = %d\n", ball.x, ball.y, ball.direction);
     return ball;
 }
 
@@ -37,13 +37,13 @@ t_ball checkAndOrChangeDirection(t_ball ball, t_player player1, t_player player2
         if (ball.direction % 2 == 0) {  //Check if ball is going left.
             if (ball.y == (player1.paddlePosition + 1)) { //Ball hit the middle of the paddle.
                 ball.direction = Right;
-                printf("!!! EVENT !!! - Ball hit Left paddle in the center.\n");
+                //printf("!!! EVENT !!! - Ball hit Left paddle in the center.\n");
             } else if ((ball.y == (player1.paddlePosition + 1) - 1) || ((ball.y == (player1.paddlePosition + 1) - 2) && (ball.direction == Diagonal_Down_Left))) { //Ball hit the top side of the paddle.
                 ball.direction = Diagonal_Up_Right;
-                printf("!!! EVENT !!! - Ball hit Left paddle on the top side or top diagonal.\n");
+                //printf("!!! EVENT !!! - Ball hit Left paddle on the top side or top diagonal.\n");
             } else if ((ball.y == (player1.paddlePosition + 1) + 1) || ((ball.y == (player1.paddlePosition + 1) + 2) && (ball.direction == Diagonal_Up_Left))) { //Ball hit the bottom side of the paddle.
                 ball.direction = Diagonal_Down_Right;
-                printf("!!! EVENT !!! - Ball hit Left paddle on the bottom side or bottom diagonal.\n");     
+                //printf("!!! EVENT !!! - Ball hit Left paddle on the bottom side or bottom diagonal.\n");     
             }
         }
     }
@@ -52,13 +52,13 @@ t_ball checkAndOrChangeDirection(t_ball ball, t_player player1, t_player player2
         if (ball.direction % 2 == 1) {  //Check if ball is going right.
             if (ball.y == (player2.paddlePosition + 1)) { //Ball hit the middle of the paddle.
                 ball.direction = Left;
-                printf("!!! EVENT !!! - Ball hit Right paddle in the center.\n");
+                //printf("!!! EVENT !!! - Ball hit Right paddle in the center.\n");
             } else if ((ball.y == (player2.paddlePosition + 1) - 1) || ((ball.y == (player2.paddlePosition + 1) - 2) && (ball.direction == Diagonal_Down_Right))) { //Ball hit the top side of the paddle.
                 ball.direction = Diagonal_Up_Left;
-                printf("!!! EVENT !!! - Ball hit Right paddle on the top side or top diagonal.\n");
+                //printf("!!! EVENT !!! - Ball hit Right paddle on the top side or top diagonal.\n");
             } else if ((ball.y == (player2.paddlePosition + 1) + 1) || ((ball.y == (player2.paddlePosition + 1) + 2) && (ball.direction == Diagonal_Up_Right))) { //Ball hit the bottom side of the paddle.
                 ball.direction = Diagonal_Down_Left;
-                printf("!!! EVENT !!! - Ball hit Right paddle on the bottom side or bottom diagonal.\n");     
+                //printf("!!! EVENT !!! - Ball hit Right paddle on the bottom side or bottom diagonal.\n");     
             }
         }
     }
@@ -66,19 +66,19 @@ t_ball checkAndOrChangeDirection(t_ball ball, t_player player1, t_player player2
     if (ball.y == 0) { //Top
         if (ball.direction % 2 == 0) { //Left.
             ball.direction = Diagonal_Down_Left;
-            printf("!!! EVENT !!! - Ball hit the Top of the grid while going Left.\n");
+            //printf("!!! EVENT !!! - Ball hit the Top of the grid while going Left.\n");
         } else { //Right.
             ball.direction = Diagonal_Down_Right;
-            printf("!!! EVENT !!! - Ball hit the Botto of the grid while going Right.\n");
+            //printf("!!! EVENT !!! - Ball hit the Botto of the grid while going Right.\n");
         }
     }
     if (ball.y == 7) { //Bottom
         if (ball.direction % 2 == 0) { //Left.
             ball.direction = Diagonal_Up_Left;
-            printf("!!! EVENT !!! - Ball hit the Bottom of the grid while going Left.\n");
+            //printf("!!! EVENT !!! - Ball hit the Bottom of the grid while going Left.\n");
         } else { //Right.
             ball.direction = Diagonal_Up_Right;
-            printf("!!! EVENT !!! - Ball hit the Bottom of the grid while going Right.\n");
+            //printf("!!! EVENT !!! - Ball hit the Bottom of the grid while going Right.\n");
         }
     }
     
@@ -88,30 +88,30 @@ t_ball checkAndOrChangeDirection(t_ball ball, t_player player1, t_player player2
 t_ball moveBall(t_ball ball) {    //Check if the ball is out of bounds.
     
     if (!((ball.x > 0 && ball.x < 7) || (ball.y >= 0 && 7 <= ball.y))) {
-        printf(" !!! EVENT !!! - Ball is out of bounds.\n");
+        //printf(" !!! EVENT !!! - Ball is out of bounds.\n");
         //If ball is out of bounds then don't move it.
     } else {
         if (ball.direction % 2 == 0) { //True = Left | False = Right.
             ball.x--;
-            printf("Ball moved Left 1.\n");
+            //printf("Ball moved Left 1.\n");
         } else {
             ball.x++;
-            printf("Ball moved Right 1.\n");
+            //printf("Ball moved Right 1.\n");
         }
 
         if (ball.direction != 0 && ball.direction != 1) { //True = Diagonal
             if (ball.direction == 2 || ball.direction == 3) { //True = Up | False = Down.
                 ball.y--;
-                printf("Ball moved Up 1.\n");
+                //printf("Ball moved Up 1.\n");
             } else {
                 ball.y++;
                 
-                printf("Ball moved Down 1.\n");
+                //printf("Ball moved Down 1.\n");
             }
         }
     }
     
-    printf("Ball has been updated to : x = %d | y = %d | direction = %s\n", ball.x, ball.y, getDirectionString(ball));
+    //printf("Ball has been updated to : x = %d | y = %d | direction = %s\n", ball.x, ball.y, getDirectionString(ball));
     return ball;
 }
 
@@ -163,7 +163,7 @@ void updatePaddles(t_game* game) {
     for (uint8_t i = 0; i < 2; i++) {
         game->players[i].paddlePosition = get_paddle_position(game->players[i]);
   }
-  printf("Paddles have been updated to : Paddle-1 = %d | Paddle-2 = %d\n", game->players[0].paddlePosition + 1, game->players[1].paddlePosition + 1);
+  //printf("Paddles have been updated to : Paddle-1 = %d | Paddle-2 = %d\n", game->players[0].paddlePosition + 1, game->players[1].paddlePosition + 1);
 }
 
 char* getDirectionString(t_ball ball) {
@@ -182,4 +182,52 @@ char* getDirectionString(t_ball ball) {
             return "Diagonal_Down_Right";
     }
     return ". . ."; 
+}
+
+void displayPointsLed(t_game game) {
+switch (game.players[0].score) { //Player-2 (Right).
+        case 1:
+            write_output_GPIO(D2, HIGH);
+            write_output_GPIO(D3, LOW);
+            write_output_GPIO(D4, LOW);
+            break;
+        case 2:
+            write_output_GPIO(D2, HIGH);
+            write_output_GPIO(D3, HIGH);
+            write_output_GPIO(D4, LOW);
+            break;
+        case 3:
+            write_output_GPIO(D2, HIGH);
+            write_output_GPIO(D3, HIGH);
+            write_output_GPIO(D4, HIGH);
+            break;
+        default:
+            write_output_GPIO(D2, LOW);
+            write_output_GPIO(D3, LOW);
+            write_output_GPIO(D4, LOW);
+            break;
+    }
+
+    switch (game.players[1].score) { //Player-1 (Left).
+        case 1:
+            write_output_GPIO(D5, HIGH);
+            write_output_GPIO(D6, LOW);
+            write_output_GPIO(D7, LOW);
+            break;
+        case 2:
+            write_output_GPIO(D5, HIGH);
+            write_output_GPIO(D6, HIGH);
+            write_output_GPIO(D7, LOW);
+            break;
+        case 3:
+            write_output_GPIO(D5, HIGH);
+            write_output_GPIO(D6, HIGH);
+            write_output_GPIO(D7, HIGH);
+            break;
+        default:
+            write_output_GPIO(D5, LOW);
+            write_output_GPIO(D6, LOW);
+            write_output_GPIO(D7, LOW);
+            break;
+    }
 }

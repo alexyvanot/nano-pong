@@ -44,35 +44,64 @@ int main(void) {
   init_potentiometers();
   init_MAX7219();
   clear_MAX7219();
-  // led();
+  led();
   set_brightness_MAX7219(0b00001111);
 
+  _delay_ms(500);
+
   t_game game = init_game();
-  draw_game(game);
-
-  printf("Game started: %u\n", game.isGameStarted);
-
   uint8_t counter = 1;
+  
+  //Default Screen in console (only values should be replaced rather than writing new lines).
+  printf("---------------------------------Status-----------------------------------\n");
+  printf("Left Paddle (player-1) = %d | Right Paddle (player-2) = %d\n", game.players[0].paddlePosition, game.players[1].paddlePosition);
+  printf("Ball is at : x = %d | y = %d | direction = %s\n", game.ball.x, game.ball.y, getDirectionString(game.ball));
+  printf("Current score : player-1 = %d | player-2 = %d\n", game.players[0].score, game.players[1].score);
+  printf("--------------------------------------------------------------------------\n");
 
-  while(true) {
-    game.ball = initBall(); //Reset the ball for play.
-    while(((game.ball.x > 0 && game.ball.x < 7) || (game.ball.y >= 0 && 7 <= game.ball.y))) {
-      printf("-------------------------------Loop-Cycle-%d-------------------------------\n", counter);
+  for(;;) {
+    game = init_game();
+    displayPointsLed(game);
+    draw_game(game);
+    printf("Game started: %u\n", game.isGameStarted);
 
-      updatePaddles(&game);
+    while(game.players[0].score < 3 && game.players[1].score < 3) {
+      game.ball = initBall(); //Reset the ball for play.
 
-      if (counter >= 9) {
-        game.ball = updateBall(game);
-        counter = 0;
-      }
-    
       clear_MAX7219();
       draw_game(game);
+
+      while(((game.ball.x > 0 && game.ball.x < 7) || (game.ball.y >= 0 && 7 <= game.ball.y))) {
+        //printf("-------------------------------Loop-Cycle-%d-------------------------------\n", counter);
+
+        updatePaddles(&game);
+
+        if (counter >= 6) {
+          game.ball = updateBall(game);
+          counter = 0;
+        }
     
-      _delay_ms(50);
-      counter++;
+        clear_MAX7219();
+        draw_game(game);
+    
+        _delay_ms(100);
+        counter++;
+      }
+
+    //printf("-----------------------------Match-Completed------------------------------\n");
+    if (game.ball.x == 0) {
+      game.players[1].score++;
+      //printf(" !!! EVENT !!! - Right player(2) scored a goal.\n");
+    } else if (game.ball.x == 7) {
+      game.players[0].score++;
+      //printf(" !!! EVENT !!! - Left player(1) scored a goal.\n");
+    } else {
+      //printf(" !!! ERROR !!! - Something went wrong with where the ball finished the current game.\n");
+    }
+    printf("Current score : player-1 = %d | player-2 = %d\n", game.players[0].score, game.players[1].score);
+    displayPointsLed(game);
     }
   }
-
+  
   return 0;
 }
