@@ -2,6 +2,7 @@
 #define nanopong_h
 
 #include "nanolib.h"
+#include "serialdebug.h"
 
 typedef struct s_paddle_position_map {
     uint8_t position;
