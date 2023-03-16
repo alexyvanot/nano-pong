@@ -21,20 +21,23 @@ void init_potentiometers()
   //printf("A0: %d ; A1: %d ", potA0, potA1);
 }
 
-void led()
-{
+void initPins() {
   init_output_GPIO(D2);
-  write_output_GPIO(D2, HIGH);
   init_output_GPIO(D3);
-  write_output_GPIO(D3, HIGH);
   init_output_GPIO(D4);
-  write_output_GPIO(D4, HIGH);
   init_output_GPIO(D5);
-  write_output_GPIO(D5, HIGH);
   init_output_GPIO(D6);
-  write_output_GPIO(D6, HIGH);
   init_output_GPIO(D7);
-  write_output_GPIO(D7, HIGH);
+  init_input_GPIO(D8, PULLUP);
+}
+
+void led(t_pin_state state) {
+  write_output_GPIO(D2, state);
+  write_output_GPIO(D3, state);
+  write_output_GPIO(D4, state);
+  write_output_GPIO(D5, state);
+  write_output_GPIO(D6, state);
+  write_output_GPIO(D7, state);
 }
 
 int main(void) {
@@ -44,14 +47,16 @@ int main(void) {
   init_potentiometers();
   init_MAX7219();
   clear_MAX7219();
-  led();
+  initPins();
+  led(HIGH);
   set_brightness_MAX7219(0b00001111);
 
   _delay_ms(500);
 
   t_game game = init_game();
+
   uint8_t counter = 1;
-  
+
   //Default Screen in console (only values should be replaced rather than writing new lines).
   printf("---------------------------------Status-----------------------------------\n");
   printf("Left Paddle (player-1) = %d | Right Paddle (player-2) = %d\n", game.players[0].paddlePosition, game.players[1].paddlePosition);
@@ -59,17 +64,17 @@ int main(void) {
   printf("Current score : player-1 = %d | player-2 = %d\n", game.players[0].score, game.players[1].score);
   printf("--------------------------------------------------------------------------\n");
 
+  printf("-> Game started: %u\n", game.isGameStarted);
   for(;;) {
     game = init_game();
-    displayPointsLed(game);
-    draw_game(game);
-    printf("Game started: %u\n", game.isGameStarted);
-
+    led(LOW);
     while(game.players[0].score < 3 && game.players[1].score < 3) {
       game.ball = initBall(); //Reset the ball for play.
-
+      displayPointsLed(game);
       clear_MAX7219();
       draw_game(game);
+
+      waitForButtonPress();
 
       while(((game.ball.x > 0 && game.ball.x < 7) || (game.ball.y >= 0 && 7 <= game.ball.y))) {
         //printf("-------------------------------Loop-Cycle-%d-------------------------------\n", counter);
@@ -99,7 +104,7 @@ int main(void) {
       //printf(" !!! ERROR !!! - Something went wrong with where the ball finished the current game.\n");
     }
     printf("Current score : player-1 = %d | player-2 = %d\n", game.players[0].score, game.players[1].score);
-    displayPointsLed(game);
+    _delay_ms(1000);
     }
   }
   

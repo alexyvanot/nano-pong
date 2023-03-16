@@ -52,6 +52,10 @@ void updatePaddles(t_game* game);
 
 t_ball checkAndOrChangeDirection(t_ball ball, t_player player1, t_player player2);
 
+t_ball checkDirectionHorizontal(t_ball ball, t_player player1, t_player player2);
+
+t_ball checkDirectionVertical(t_ball ball);
+
 t_ball moveBall(t_ball ball);
 
 uint8_t get_paddle_position(t_player player);
@@ -69,5 +73,7 @@ uint8_t generate_random_number(uint8_t lower, uint8_t upper); //upper inclusive
 char* getDirectionString(t_ball ball);
 
 void displayPointsLed(t_game game);
+
+void waitForButtonPress();
 
 #endif

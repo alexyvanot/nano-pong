@@ -33,6 +33,16 @@ t_ball updateBall(t_game game) {
 }
 
 t_ball checkAndOrChangeDirection(t_ball ball, t_player player1, t_player player2) {
+    if (((ball.x == 1) || ball.x == 6) && ((ball.y == 0) || (ball.y == 7))){
+        ball = checkDirectionVertical(ball);
+    }
+    ball = checkDirectionHorizontal(ball, player1, player2);
+    ball = checkDirectionVertical(ball);
+    
+    return ball;
+}
+
+t_ball checkDirectionHorizontal(t_ball ball, t_player player1, t_player player2) {
     if (ball.x == 1) {   //Check if ball is neighboring the Left Paddle (Player 1).
         if (ball.direction % 2 == 0) {  //Check if ball is going left.
             if (ball.y == (player1.paddlePosition + 1)) { //Ball hit the middle of the paddle.
@@ -63,6 +73,10 @@ t_ball checkAndOrChangeDirection(t_ball ball, t_player player1, t_player player2
         }
     }
     
+    return ball;
+}
+
+t_ball checkDirectionVertical(t_ball ball) {
     if (ball.y == 0) { //Top
         if (ball.direction % 2 == 0) { //Left.
             ball.direction = Diagonal_Down_Left;
@@ -231,3 +245,15 @@ switch (game.players[0].score) { //Player-2 (Right).
             break;
     }
 }
+
+void waitForButtonPress() {
+    printf("Press button to start.\n");
+    for(;;) {
+      if (read_input_GPIO(D8) == LOW) {
+        printf("-> Start !\n");
+        return;
+      }
+    }
+}
+
+
