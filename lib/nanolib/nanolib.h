@@ -6,6 +6,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/atomic.h>
+#include <stdlib.h>
 
 typedef enum e_nano_pin_id {
   D0,
