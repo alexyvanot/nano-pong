@@ -70,7 +70,6 @@ int main(void) {
     led(LOW);
     while(game.players[0].score < 3 && game.players[1].score < 3) {
       game.ball = initBall(); //Reset the ball for play.
-      displayPointsLed(game);
       clear_MAX7219();
       draw_game(game);
 
@@ -94,16 +93,17 @@ int main(void) {
       }
 
     //printf("-----------------------------Match-Completed------------------------------\n");
+    if (game.ball.x == 7) {
+      game.players[0].score++;
+      //printf(" !!! EVENT !!! - Left player(1) scored a goal.\n");
+    }
     if (game.ball.x == 0) {
       game.players[1].score++;
       //printf(" !!! EVENT !!! - Right player(2) scored a goal.\n");
-    } else if (game.ball.x == 7) {
-      game.players[0].score++;
-      //printf(" !!! EVENT !!! - Left player(1) scored a goal.\n");
-    } else {
-      //printf(" !!! ERROR !!! - Something went wrong with where the ball finished the current game.\n");
     }
+    
     printf("Current score : player-1 = %d | player-2 = %d\n", game.players[0].score, game.players[1].score);
+    displayPointsLed(game);
     _delay_ms(1000);
     }
   }
