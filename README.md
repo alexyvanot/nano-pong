@@ -19,14 +19,16 @@ Players use the paddles to hit a ball back and forth.
 ## **Images**
 
 > There our breadboard. (develop in order to reveal)
-- <details>
-  ![Circuit](/resources/images/breadboard/main.jpg "Circuit")
-  ![Circuit](/resources/images/breadboard/main2.jpg "Circuit")
-  ![Circuit](/resources/images/breadboard/main3.jpg "Circuit")
-  ![Circuit](/resources/images/breadboard/MAX7219.jpg "Circuit")
-  ![Circuit](/resources/images/breadboard/nano.jpg "Circuit")
-  ![Circuit](/resources/images/breadboard/potentiometers.jpg "Circuit")
-</details>
+- <div><details>
+  <summary>Cliquez pour voir les images</summary>
+  <img src="/resources/images/breadboard/main.jpg" alt="Circuit" title="Circuit">
+  <img src="/resources/images/breadboard/main2.jpg" alt="Circuit" title="Circuit">
+  <img src="/resources/images/breadboard/main3.jpg" alt="Circuit" title="Circuit">
+  <img src="/resources/images/breadboard/MAX7219.jpg" alt="Circuit" title="Circuit">
+  <img src="/resources/images/breadboard/nano.jpg" alt="Circuit" title="Circuit">
+  <img src="/resources/images/breadboard/potentiometers.jpg" alt="Circuit" title="Circuit">
+</details></div>
+
 
 ---
 
@@ -45,18 +47,22 @@ In order to use our project, make sure to import it in to Visual Studio Code wit
 > 
 > Then, import the project to VSCode using PlateformIO extension. Click on its icon at the side bar then pick the cloned git project.
 - <details>
-  ![Image](/resources/images/read_me/init_platformio.png "Init")
-  ![Image](/resources/images/read_me/import_folder.png "Pick")
+  <summary>Cliquez pour voir les images</summary>
+  <img src="/resources/images/read_me/init_platformio.png" alt="Init" title="Init">
+  <img src="/resources/images/read_me/import_folder.png" alt="Pick" title="Pick">
 </details>
+
 
 > 
 > #### **3. Plug the Arduino Nano to your computer** 
 >
 > Then upload on it the code then show its console.
 - <details>
-  ![Image](/resources/images/read_me/import.png "Init")
-  ![Image](/resources/images/read_me/serial_monitor.png "Pick")
+  <summary>Cliquez pour voir les images</summary>
+  <img src="/resources/images/read_me/import.png" alt="Init" title="Init">
+  <img src="/resources/images/read_me/serial_monitor.png" alt="Pick" title="Pick">
 </details>
+
 
 ---
 
