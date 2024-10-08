@@ -19,7 +19,7 @@ Players use the paddles to hit a ball back and forth.
 ## **Images**
 
 > There our breadboard. (develop in order to reveal)
-- <div><details>
+- <details>
   <summary>Cliquez pour voir les images</summary>
   <img src="/resources/images/breadboard/main.jpg" alt="Circuit" title="Circuit">
   <img src="/resources/images/breadboard/main2.jpg" alt="Circuit" title="Circuit">
@@ -27,7 +27,7 @@ Players use the paddles to hit a ball back and forth.
   <img src="/resources/images/breadboard/MAX7219.jpg" alt="Circuit" title="Circuit">
   <img src="/resources/images/breadboard/nano.jpg" alt="Circuit" title="Circuit">
   <img src="/resources/images/breadboard/potentiometers.jpg" alt="Circuit" title="Circuit">
-</details></div>
+</details>
 
 
 ---
